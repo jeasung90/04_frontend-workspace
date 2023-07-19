@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>실습1</title>
+    <style>
+        div{
+            /* border: 1px solid pink; */
+            box-sizing: border-box;
+        }
+        .warp{
+            width: 1000px;
+            height: 800px;
+            margin: auto;
+        }
+        .warp>div{ width: 100%; }
+        #header{ height: 20%; }
+        #navigator{  height: 5%; }
+        #content{ height: 60%;}
+        #footer{height: 15%; }
+        #logo{height: 100%; width: 40%;}
+        #logo{
+            width: 20%;
+            height: 80%;
+            margin-left: 50px;
+            margin-top: 20px;
+            float: left;
+        }
+        #logo2{
+            width: 50%;
+            height: 80%;
+            float: left;
+            margin-top: 20px;
+            margin-left: 30px;
+        }
+        #navigator div{
+            height: 100%;
+            width: 25%;
+            float: left;
+            background-color: green;
+            color: white;
+            text-align: center;
+            font-size: larger;
+            font-weight: 700;
+            padding-top: 6px;
+        }
+        #footer>p{
+            width: 100%;
+            height: 100%;
+            height: 20%; 
+            /* text-align: center; */
+        }
+        #content>div{
+            height: 100%;
+            box-sizing: border-box;
+        }
+       #content_1{width: 19%; float: left;} 
+       #content_2{width: 27%; float: left} 
+       #content_3{width: 25%; float:left } 
+       #content_4{width: 25%; float:left } 
+       #limg{width: 100%; height: 100%;}
+       #content_2_1{height: 50%;}
+       #content_2_2{height: 50%;}
+       #content_3_1{height: 50%;}
+       #content_3_2{height: 50%;}
+       p{text-align: center;  margin: 0;}
+       #imgs{width: 100%;height: 85%;}
+
+       #content_4>div{
+        width: 100%;
+        box-sizing: border-box;
+       }
+       #content_4_1{
+        height: 20%;
+        }
+       #content_4_2{
+        height: 45%;
+       }
+       #content_4_3{
+        height: 30%;
+       }
+       /* 로긴 */
+       
+       #login_form{width: 100%; height: 30%;}
+        #login_form>*{width: 100%;}
+        #login_form_input{height: 80%;}
+        #login_form_etc{height: 20%; text-align: center; }
+
+        #login_form_input>*{height: 100%; float: left;}
+
+        #login_input_id_pwd{width: 63%;}
+        #login_input_btn{width: 32%;}
+
+        #login_input_id_pwd>input{width: 100%; height: 50%; box-sizing: border-box;}
+        #login_input_btn>input{width: 100%;height: 100%; font-size: larger;}
+
+        a{text-decoration: none;color:black; font-size: 12px; margin: 10px; vertical-align: middle;/*text-align: center; 여따쓰는거 아님*/}
+        /* 로긴 끝 */
+        #imgl{
+            width: 100%;
+            height: 100%;
+        }
+        #content div{
+            margin: 3px;
+        }
+        #content_4_2>img{margin-top: 5px;}
+      
+    </style>
+</head>
+<body>
+    <div class="warp">
+        <div id="header">
+            <!-- <div id="logo">
+               
+            </div> -->
+            <img src="image/logo.jpg" id="logo" alt="">
+            <img src="image/mainlogo.jpg" id="logo2" alt="">
+        </div>
+        <div id="navigator">
+            <div id="navi_1">HOME</div>
+            <div id="navi_2">Profile</div>
+            <div id="navi_3">Board</div>
+            <div id="navi_4">contact</div>
+        </div>
+        <div id="content">
+            <div id="content_1">
+               <img src="image/left_img.jpg" id="limg" alt="">
+            </div>
+            <div id="content_2">
+                <div id="content_2_1">
+                    <img src="image/main_img1.jpg" id="imgs" alt="">
+                    <p id="p1">나무를 가따 심는 닝겐들</p>
+                </div>
+                <div id="content_2_2">
+                    <img src="image/main_img3.jpg" id="imgs" alt="">
+                    <p class="p2">토깽이</p>
+                </div>
+            </div>
+            <div id="content_3">
+                <div id="content_3_1">
+                    <img src="image/main_img2.jpg" id="imgs" alt="">
+                    <p id="p1">나무를 가따 심는 닝겐들</p>
+                </div>
+                <div id="content_3_2">
+                    <img src="image/main_img4.jpg" id="imgs" alt="">
+                    <p class="p2">몰루2</p>
+                </div>
+            </div>
+            <div id="content_4">
+                <!-- <div id="content_4_1"> -->
+                    <div id="content_4_1">
+
+                        <!-- 2_1. 입력받아 요청할 수 있는 form -->
+                        <form action="" id="login_form_input">
+            
+                            <!-- 3_1. ID/PWD 텍스트 상자가 들어갈 DIV -->
+                            <div id="login_input_id_pwd">
+                                <input type="text" name="userId" placeholder="아이디를 입력하세요." required>
+                                <input type="password" name="userPwd" placeholder="비밀번호를 입력하세요." required>
+                            </div>
+            
+                            <!-- 3_2. 로그인  버튼이 들어갈 div -->
+                            <div id="login_input_btn">
+                                <input type="submit" value="로그인">
+                            </div>
+                        </form>
+            
+            
+                        <!-- 2_2. 회원가입,ID,PWD 찾기 링크 영역 -->
+                        <div id="login_form_etc">
+                            <a href="#">회원가입</a>
+                            <a href="#">아이디/비밀번호 찾기</a>
+                        </div>
+                    </div>
+                <!-- </div> -->
+                <div id="content_4_2">
+                    <img src="image/right_img.jpg" id="imgl" alt="">
+                </div>
+                <div id="content_4_3">
+                    <img src="image/me_chat.jpg" id="imgl" alt="">
+                </div>
+            </div>
+
+
+
+        </div>
+        <div id="footer">
+            <img src="image/footer.JPG" alt="">
+        </div>
+
+    </div>
+</body>
+</html>

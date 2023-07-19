@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>영역관련속성</title>
+    <style>
+        
+        .test{
+            /* border 영역 */
+            border: 20px solid blue;
+
+            /* content 영역 */
+            width: 300px;
+            height: 150px;
+            /* width height 는 기본적으로 content 영역 까지만 */
+
+            /* padding 영역 */
+            padding: 10px;
+
+            /* 이 요소의 전체 가로길이는? 360 */
+            /* 이 요소의 전체 세로길이는? 210 */
+
+            /* box-sizing 내가 지정한 width, height를 어느 영역까지의 범위로 할건지 지정 가능 */
+            box-sizing: content-box; /* 기본값 */
+            box-sizing: border-box; /* 보더까지 전부 다 */
+        }
+
+        .wrap{
+            border: 5px solid red;
+            width: 400px;
+            height: 200px; /* 여기까지 쓰면 content의 크기임 */
+
+        }
+
+        .test1, .test2{
+            border: 5px solid blue;
+            /* 공통속성 : 가로길이 부모꺼 100% */
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .test1{
+            height: 40%;
+        }
+        .test2{
+            height: 60%;
+        }
+        .test3,.test4{
+            border: 5px solid green;
+            box-sizing: border-box;
+            height: 100%; /*공통속성 : 세로길이 부모꺼 100% */
+            float: left;
+
+        }
+        .test3{
+            width: 30%;
+        }
+        .test4{
+            width: 70%;
+        }
+
+        .test5,.test6,.test7,.test8{
+            border: 5px solid skyblue;
+            box-sizing: border-box;
+        }
+        .test5{
+            width: 30%;
+            height: 40%;
+            float: left;
+        }
+        .test6{
+            width: 70%;
+            height: 40%;
+            float: left;
+        }
+        .test7{
+            width: 30%;
+            height: 60%;
+            float: left;
+        }
+        .test8{
+            width: 70%;
+            height: 60%;
+            float: left;
+        }
+    </style>
+</head>
+<body>
+    
+    <h1>영역관련속성</h1>
+
+    <div class="test">
+        1) content 영역 : 요소내의 내용물 영역 <br>
+        2) border 영역 : 요소내의 테두리 영역 <br>
+        3) padding 영역 : content와 border 사이의 영역(여백)   <br>
+        4) margin 영역 : 요소 바깥쪽 영역
+    </div>
+
+    <h2>div 안에 또 다른 여러개의 div 넣는 연습</h2>
+
+    <h3>상하 2등분 하기</h3>
+    <div class="wrap">
+        <div class="test1">북</div>
+        <div class="test2">남</div>
+    </div>
+
+    <h3>좌우 2등분 하기</h3>
+    <div class="wrap">
+        <div class="test3">좌</div>
+        <div class="test4">우</div>
+    </div>
+
+    <h3>상하좌우 4등분 하기</h3>
+    <div class="wrap">
+        <div class="test5">왼상</div>
+        <div class="test6">오상</div>
+        <div class="test7">왼하</div>
+        <div class="test8">오하</div>
+    </div>
+
+
+
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+
+</html>

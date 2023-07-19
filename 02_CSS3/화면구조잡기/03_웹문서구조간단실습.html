@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>웹문서구조 간단실습</title>
+    <style>
+        div{border: 2px solid gray;}
+        .warp{
+            box-sizing: border-box;
+            width: 1000px;
+            height: 800px;
+            margin: auto;
+        }
+        .warp>div{
+            width: 99%;
+            box-sizing: border-box;
+            margin-left: 0.5%;
+            margin-right: 0.5%;
+        }
+        #header,#footer{
+            height: 19%;
+            margin-top: 0.4%;
+        }
+        
+        #content{
+            height: 60%;
+            margin-top: 0.4%;
+        }
+        /* ----------------------------------------*/
+        #header_1,#header_2{
+            height: 93%;
+            margin-top: 0.3%;
+        }
+        #header_1{
+            width: 39%;
+            margin-left: 0.4%;
+            float: left;
+        }
+        #header_2{
+            width: 59%;
+            float: left;
+            margin-left: 0.4%;
+        }
+        /* ----------------------------------------- */
+        #content>div{
+            height: 97.5%;
+            margin-top: 0.4%;
+            margin-left: 0.4%;
+            float: left;
+        }
+        #content_1{
+            width: 9%;
+        }
+        #content_2{
+            width: 79%;
+        }
+        #content_3{
+            width: 9%;
+        }
+    </style>
+</head>
+<body>
+    <div class="warp">
+
+        <div id="header">
+            <div id="header_1">
+                <img src="딱대2.jpg" alt="">
+            </div>
+            <div id="header_2">
+                <h1 style="color: red; font-size: xx-large; font-weight: 900;">딱대</h1>
+            </div>
+        </div>
+
+        <div id="content">
+            <div id="content_1"></div>
+            <div id="content_2">
+                
+            </div>
+            <div id="content_3"></div>
+        </div>
+        <div id="footer"></div>
+    </div>
+
+
+
+
+</body>
+</html>

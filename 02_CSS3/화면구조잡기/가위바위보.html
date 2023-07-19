@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>가위바위보 게임</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 30px;
+      background-color: #fff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      text-align: center;
+    }
+
+    .result {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    .choices {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 40px;
+    }
+
+    .choice {
+      cursor: pointer;
+      margin: 0 10px;
+      padding: 10px 20px;
+      border: 2px solid #333;
+      border-radius: 5px;
+      font-size: 20px;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .choice:hover {
+      background-color: #f9f9f9;
+    }
+
+    .computer-choice {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>가위바위보 게임</h1>
+    <div class="result" id="result"></div>
+    <div class="choices">
+      <div class="choice" onclick="play('가위')">가위</div>
+      <div class="choice" onclick="play('바위')">바위</div>
+      <div class="choice" onclick="play('보')">보</div>
+    </div>
+    <div class="computer-choice" id="computerChoice"></div>
+  </div>
+
+  <!-- Bootstrap JS and jQuery -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <script>
+    function play(userChoice) {
+      const choices = ["가위", "바위", "보"];
+      const computerChoice = choices[Math.floor(Math.random() * choices.length)];
+
+      let result = "";
+
+      if (userChoice === computerChoice) {
+        result = "비겼습니다!";
+      } else if (
+        (userChoice === "가위" && computerChoice === "보") ||
+        (userChoice === "바위" && computerChoice === "가위") ||
+        (userChoice === "보" && computerChoice === "바위")
+      ) {
+        result = "이겼습니다!";
+      } else {
+        result = "졌습니다!";
+      }
+
+      document.getElementById("result").innerHTML = `사용자: ${userChoice} | 컴퓨터: ${computerChoice} | 결과: ${result}`;
+      document.getElementById("computerChoice").innerHTML = `컴퓨터가 선택한 것은: ${computerChoice}`;
+    }
+  </script>
+</body>
+</html>
