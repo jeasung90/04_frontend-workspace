@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>배열</title>
+    <style>
+        .area{border: 1px solid red; }
+        .small{height: 100px ;}
+        .big{height: 300px;}
+        
+    </style>
+</head>
+<body>
+
+    <h1>배열</h1>
+    <p>
+        변수 선언시 별도의 자료형 지정이 없기 때문에 <br>
+        어떤 자료형의 값들이든 다 하나의 배열 공간에 담을 수 있음, 크기의 제약도 없음<br>
+        (자바의 컬렉션과 유사)
+    </p>
+
+    <button onclick="arrayTEst1();">확인하기</button>
+    <div id="area1" class="area small"></div>
+
+    <script>
+        function arrayTEst1() {
+            const arr = ["문동은",'서울',49,true,[1,2,3]]; // 배열 객체(type == object)
+
+            console.log(arr);
+            console.log(arr[2]);
+            console.log(arr[4]);
+            console.log(arr[4][2]);
+
+            const area1 = document.getElementById("area1");
+
+            for(let i=0; i<arr.length; i++){
+                area1.innerHTML += arr[i] + "<br>";
+            }
+
+        }
+    </script>
+    
+</body>
+</html>
