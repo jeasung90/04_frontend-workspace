@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>실습1
+
+    </title>
+</head>
+<body>
+    <h1>간이 계산기 만들기</h1>
+    첫번째 값 : <input type="number" id="num1"> <br>
+    두번째 값 : <input type="number" id="num2"><br>
+    <button onclick="test1('+');">+</button>
+    <button onclick="test1('-');">-</button>
+    <button onclick="test1('*');">X</button>
+    <button onclick="test1('/');">%</button>
+    <br>
+    계산결과:
+    <div id="area1"></div>
+
+    <script>
+        function test1(a) {
+            let num1 = Number(document.getElementById("num1").value);
+            let num2 = Number(document.getElementById("num2").value);
+
+            const area1 = document.getElementById("area1");
+
+            switch(a){
+                case '+':area1.innerHTML = num1 +num2;
+                    break;
+                case '-':area1.innerHTML = num1 -num2;
+                    break;
+                case '*':area1.innerHTML = num1 * num2;
+                    break;
+                case '/':area1.innerHTML = num1 /num2;
+                    break;
+            }
+        }
+    </script>
+<br>
+    <hr>
+
+    <h1>배열 실습 문제 1</h1>
+    <fieldset>
+        <legend>보기</legend>
+        <p id="p1">사과,바나나,당근</p>
+        <p id="p2">김밥,치즈,떡볶이,햄버거</p>
+        <p id="p3">환타, 사이다, 콜라</p>
+        <p id="p4">고양이, 강아지</p>
+                    
+        
+    </fieldset>
+    <input type="text" id="text">
+    <br>
+    <button onclick="test2();">반송 및 처리</button>
+
+    <div id="area2"></div>
+    <script>
+        function test2() {
+            const p1 = document.getElementById("p1").innerHTML;
+            const p2 = document.getElementById("p2").innerHTML;
+            const p3 = document.getElementById("p3").innerHTML;
+            const p4 = document.getElementById("p4").innerHTML;
+            let arr = p1.split(",");
+            arr = arr.concat(p2.split(","));
+            arr = arr.concat(p3.split(","));
+            arr = arr.concat(p4.split(","));
+
+            const text = document.getElementById("text").value;
+            const index = arr.indexOf(text);
+            
+            const area2 = document.getElementById("area2");
+            if(index == -1){
+                area2.innerHTML+="판매하지 않습니다.";
+                }else {
+                    area2.innerHTML+= index +"번째 인덱스에 있습니다.";
+                }
+        }
+    </script>
+    <br>
+    <hr>
+    <h1>배열 실습 문제 2</h1>
+    
+    <fieldset>
+        <legend>보기</legend>
+        <p id="p11">r b</p>
+        <p id="p22">e v o l</p>
+        
+        
+    </fieldset>
+    <div id="area3" style="border: 1px solid; width: 200px;height: 30px;"></div>
+    <button onclick="test3();">처리</button>
+
+    <script>
+        function test3() {
+            const p11 = document.getElementById("p11").innerHTML;
+            const p22 = document.getElementById("p22").innerHTML;
+            let arr = p11.split(" ");
+            arr = arr.concat(p22.split(" "));
+            const area3 = document.getElementById("area3");
+
+            area3.innerHTML = arr.reverse().join("") 
+        }
+
+    </script>
+    <br>
+    <hr>
+
+    <h1>배열 실습 문제 3</h1>
+
+    <fieldset>
+        <legend>보기</legend>
+        <input type="text" id="text3">
+        <button onclick="test4();">입력</button>
+    </fieldset>
+    <div id="area4" style="border: 1px solid; width: 150px;height: 20px;"></div>
+
+    <script>
+        const arr = [];
+
+        function test4() {
+            const area4 = document.getElementById("area4");
+            const text3 = document.getElementById("text3").value;
+
+            arr.push(text3);
+
+            console.log(arr)
+            area4.innerHTML = arr
+
+        }
+    </script>
+
+    <hr>
+
+    <h1>배열 실습 문제 4</h1>
+    <fieldset>
+        <legend>보기</legend>
+        <p id="pp">피자 치킨 당근 햄버거 떡볶이</p>
+    </fieldset>
+    <input type="text" id="delete" placeholder="삭제할 음식">
+    <input type="text" id="input" placeholder="추가할 음식">
+    <div id="area5" style="border: 1px solid;width: 150px;height: 20px;"></div>
+    <br>
+    <button onclick="test5();">처리 및 출력</button>
+
+    <script>
+        function test5(){
+            const area5 = document.getElementById("area5");
+            const pp = document.getElementById("pp").innerHTML;
+            
+            const del = document.getElementById("delete").value;
+            const inp = document.getElementById("input").value;
+
+            const arr = pp.split(" ");
+
+            console.log(del)
+
+            for(let i = 0; i < arr.length; i++) { 
+                if(arr[i] == del)  {
+                 arr.splice(i, 1 , inp);
+                i--;
+                }
+            }
+
+            area5.innerHTML = arr
+        }
+    </script>
+
+
+
+
+
+
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>

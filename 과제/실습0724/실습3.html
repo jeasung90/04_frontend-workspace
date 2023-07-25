@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>실습3</title>
+</head>
+<body>
+    <h1>HTML 태그에 접근 테스트</h1>
+
+    구매자 : <input type="text" name="a" placeholder="차은우 빼고 아무나"><br><br>
+    상품명 : <input type="text" id="b" placeholder="대파버거 곧 먹으러 갑니다."><br><br>
+    가격 : <input type="text" name="c" placeholder="돈좀 주삼"><br><br>
+    <button onclick="abc();">입력값 출력하기</button>
+    <br><br>
+    <div id="box"  style="border: 1px solid;  width: 300px; height: 150px; background-color: bisque;"></div>
+
+    <script>
+        function abc() {
+            var box = document.getElementById("box");
+            var a = document.getElementsByTagName("input")[0].value;
+            var b = document.getElementById("b").value;
+            var c = document.getElementsByName("c")[0].value;
+
+            box.innerHTML = "구매자 : " +a +"<br> 구입상품 : "+b+"<br>  구매가격 : "+c +"원";
+
+        }
+    </script>
+
+
+
+
+</body>
+</html>

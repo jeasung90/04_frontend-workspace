@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>실습1</title>
+    <style>
+        table{
+            width: 200px;
+            height: 200px;
+        }
+    </style>
+</head>
+<body>
+    <h1>행 열 각각 입력받아 테이블 만들기</h1>
+    <button onclick="test1();">테이블 생성</button>
+    <div style="width: 300px;height: 300px;" id="area3"></div>
+    
+    .
+    <script>
+        function test1() {
+            var x = prompt("몇행을 추가?");
+            var y = prompt("몇열을 추가?");
+
+            var a = "<table border='1'>";
+                for(var i=0; i<x;i++){
+                    a += "<tr>";
+                    
+                        for(var t=0;t<y;t++){
+                        a += "<td></td>";
+                        }
+                   
+                    a += "</tr>"
+                }
+                "</table>"
+                var divEl = document.getElementById("area3")
+                divEl.innerHTML = a
+        }
+    </script>
+    
+    <h1>행 열 각각 입력받아 테이블 만들기</h1>
+    <button onclick="test2();">테이블 새화면 생성</button>
+    
+    <script>
+        function test2() {
+            var x = prompt("몇행을 추가?");
+            var y = prompt("몇열을 추가?");
+
+            var a = "<table border='1'>";
+            let num =1;
+                for(var i=0; i<x;i++){
+                    a += "<tr>";
+                    
+                        for(var t=0;t<y;t++){
+                        a += "<td>"+num+"</td>";
+                        num++
+                        }
+                   
+                    a += "</tr>"
+                }
+                a+="</table>"
+                document.write(a);
+        }
+    </script>
+
+</body>
+</html>
