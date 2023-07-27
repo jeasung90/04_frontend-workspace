@@ -96,8 +96,12 @@
         function test3() {
             const p11 = document.getElementById("p11").innerHTML;
             const p22 = document.getElementById("p22").innerHTML;
-            let arr = p11.split(" ");
-            arr = arr.concat(p22.split(" "));
+            
+            let arr= p22.split(" ");
+            arr = arr.concat(p11.split(" "));
+            
+            // let arr = p11.split(" ");
+            // arr = arr.concat(p22.split(" "));
             const area3 = document.getElementById("area3");
 
             area3.innerHTML = arr.reverse().join("") 
