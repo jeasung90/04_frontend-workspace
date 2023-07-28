@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .area{
+            border: 1px solid lightgray;
+            padding: 10px;
+            width: 600px;
+        }
+
+        label{
+            color: gray;
+            padding-left: 10px;
+            font-size: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1> &lt;정규표현식을 활용한 회원가입 폼 &gt;</h1>
+    <form action="insert.me" method="post">
+        <div id="area1" class="area">
+            <br>
+            * 아이디 :
+            <input type="text" name="userId" id="userId" required> <br>
+            <label>첫글자는 반드시 영문자로, 그리고 영문자, 숫자 포함하여 총 4~12자리로 입력하시오</label>
+            <br><br>
+
+            * 비밀번호 :
+            <input type="password" name="userPwd1" id="userPwd1" required> <br>
+            <label>영문자, 숫자, 특수문자 포함하여총 8~15자리로 입력하시오</label>
+            <br><br>
+
+            * 비밀번호 확인 :
+            <input type="password" id="userPwd2" required> <br>
+            <label>위의 비밀번호와 일치하게 입력하시오.</label>
+            <br><br>
+
+            * 이름 :
+            <input type="text" name="userName" id="userName" required> <br>
+            <label>할글로만 이뤄줘야되며 2글자 이상으로 입력하시오.</label>
+            <br><br>
+
+            - 이메일 :
+            <input type="email" name="email" id="email"> <br>
+            <label>이메일 형식에 맞춰서 입력하시오.</label>
+            <br><br>
+
+            - 취미 :
+            <input type="text" name="hobby" id="hobby" list="hobbyList" placeholder="축구,농구,야구,독서 등">
+            <datalist id="hobbyList">
+                <option value="soccer">축구</option>
+                <option value="basketball">농구</option>
+                <option value="baseball">야구</option>
+                <option value="reading">독서</option>
+            </datalist>
+
+            <br><br>
+
+            - 거주지 :
+            <select name="address" id="address">
+                <option value="seoul" selected>서울</option>
+                <option value="incheon">인천</option>
+                <option value="busan">부산</option>
+            </select>
+
+            <br><br>
+
+            <input type="submit" value="회원가입" onclick="return validate();">
+            <input type="reset" value=" 취소">
+            <br><br>
+        </div>
+    </form>
+
+    <script>
+        function validate() {
+            // 아이디, 비번, 비번 일치여부, 이름
+            
+            // input요소 객체들 가져다 놓기
+
+            const idInput = document.getElementById("userId");
+            const pwdInput1 = document.getElementById("userPwd1");
+            const pwdInput2 = document.getElementById("userPwd2");
+            const nameInput = document.getElementById("userName");
+
+            // 1) 아이디 검사
+            //      영소문자, 숫자로만 총 4~12글자로 이뤄져야함
+            //      단, 첫 글자는 반드시 영문자로
+
+            let regEXP = /^[a-z][a-z\d]{3,11}$/;
+
+            if(!regEXP.test(idInput.value)){
+                alert("유효한 아이디를 입력해라~ 앙~");
+                idInput.select();
+                return false;
+            }
+
+            // 2) 비밀번호 검사
+            //      영문자(대소문자),숫자,특수문자 로 총 8~15글자 사이로
+            regEXP =/^[a-z\d!@#$%^&*]{8,15}$/i;
+
+            if(!regEXP.test(pwdInput1.value)){
+                alert("비번 양식에 맞게 작성해라! 이눔식기")
+                pwdInput1.value = "";
+                pwdInput1.focus(); // 커서 깜빡깜빡
+                return false;
+            }
+
+            // 3) 비밀번호 화긴검사
+
+            if(pwdInput1.value != pwdInput2.value){
+                alert("비번 일치하지 않는다. 땍대!")
+                pwdInput2.value ="";
+                pwdInput2.focus();
+                return false;
+            }
+
+            // 4) 이름 검사
+            //      한글(결합형태)로만 2글자 이상
+
+            regEXP = /^[가-힣]{2,}$/;
+            if(!regEXP.test(nameInput.value)){
+                alert("유효한 이름이 아니다 앙!")
+                nameInput.select();
+                return false;
+            }
+
+
+
+
+
+
+
+
+
+
+        }
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
