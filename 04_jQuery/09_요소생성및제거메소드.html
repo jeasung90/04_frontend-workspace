@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="resources/js/jquery-3.7.0.min.js"></script>
+    <title>요소생성 및 제거</title>
+    <style>
+      .added{            color: palegreen;        }
+
+      .item{
+        background-color: yellowgreen;
+        width: 100px;
+        height: 100px;
+        text-align: center;
+        line-height: 100px; /* 높이랑 똑같이 하면 됨! */
+        margin: 5px;
+      }
+      .item span{
+        font-size: 20px;
+        color: white;
+        font-weight: 700;
+      }
+      .purple{
+        background-color: purple;
+      }
+    </style>
+</head>
+<body>
+    
+    <h1>요소 생성 및 제거</h1>
+
+    <h3>* 동적으로 요소 생성</h3>
+
+    <button id="btn">눌루요소생성</button>
+
+    <div id="area1"></div>
+
+    <script>
+        $(function(){
+            // <p>~~~</p>
+
+            // 1. 문자열로 만드는 방법
+
+            let el1 = "<p>Create Element By Text</p>";
+
+            // 2. DOM 메소드로 만드는 방법 (createElement, createTextNode)
+            let el2 = document.createElement("p");
+            let text = document.createTextNode("Create Element By DOM"); // 해당 글자 생김
+
+            el2.appendChild(text);
+
+            // 3. jQuery로 맹그는 방법
+            let el3 = $("<p></p>").text("Create Element By jQuery");
+
+            console.log(el1);
+            console.log(el2);
+            console.log(el3);
+
+            $("#area1").append(el1,el2,el3);
+
+
+        })
+    </script>
+
+    <hr>
+    
+    <h3>* 삽입 관련 메소드 part1</h3>
+    <p>
+        선택된 요소를 기준으로 새로운 요소를 추가시켜주는 메소드 <br><br>
+        $(A).append(B) : A요소 내에 뒷 부분에 B를 추가 (자손/하위) <br>
+        $(A).prepend(B) : A요소 내에 앞 부분에 B를 추가 (자손/하위) <br><br>
+
+        $(A).after(B) : A요소 뒷 부분에 B를 추가 (동위) <br>
+        $(A).before(B) : A요소 앞 부분에 B를 추가 (동위) <br><br>
+    </p>
+
+    <h1 id="test1">
+        <span>A</span>
+    </h1>
+    <h1 id="test2">
+        <span>A</span>
+    </h1>
+    <h1 id="test3">
+        <span>A</span>
+    </h1>
+    <h1 id="test4">
+        <span>A</span>
+    </h1>
+
+    <script>
+        $(function(){
+            $("#test1").append("<span class='added'>B</span>"); // 원래 있던 자손뒤로 붙음 => h1안에 들어감
+            $("#test2").prepend("<span class='added'>B</span>"); // 원래 있던 자손 앞으로 붙음 
+
+            $("#test3").before("<span class='added'>B</span>");  // 원래 있던 요소 앞으로 붙음
+            $("#test3").after("<span class='added'>B</span>");
+        })
+    </script>
+
+    <h3>* 삽입 관련 메소드 part2</h3>
+    <p>
+        선택된 요소를 기준으로 새로운 요소를 추가시켜주는 메소드 <br><br>
+        $(B).appendTo(A) : B요소를 A요소 내에 뒷부분으로 추가 (자손/하위) <br>
+        $(B).prependTo(A) : B요소를 A요소 내에 앞부분에 추가 (자손/하위) <br><br>
+
+        $(B).inserAfter(A) : B요소를 A요소  뒷 부분에 추가 (동위) <br>
+        $(B).insertBefore(A) : B요소를 A요소 앞부분에 추가 (동위) <br><br>
+    </p>
+
+    <!-- part2 -->
+    <h1 class="test1">
+        <span>A</span>
+    </h1>
+    <h1 class="test2">
+        <span>A</span>
+    </h1>
+    <h1 class="test3">
+        <span>A</span>
+    </h1>
+    <h1 class="test4">
+        <span>A</span>
+    </h1>
+
+    <script>
+        $(function(){
+            $("<span class='added'>B</span>").appendTo(".test1");
+            $("<span class='added'>B</span>").prependTo(".test2");
+
+            $("<span class='added'>B</span>").insertBefore(".test3");
+            $("<span class='added'>B</span>").insertAfter(".test4");
+        })
+    </script>
+
+    <hr>
+
+    <h3>* 요소 객체 복제 메소드</h3>
+
+    <p>
+        변수 = $("선택자").clone([true | false]) : 선택된 요소를 복제해서 반환해주는 메소드 <br>
+        true | false : 복제할 요소에 걸려있는 이벤트까지도 복사할껀지 지정(기본값은 fasle)
+
+    </p>
+
+    <div class="clone-test">
+        <!-- 복제할 요소 -->
+        <div id="item1" class="item">
+            <span>안뇽</span>
+        </div>
+    </div>
+
+    <button id="clone" onclick="test1();">복제</button>
+
+    <div id="clone-result">
+        앙~
+    </div>
+
+    <script>
+        let test = 1;
+        function test1(){
+            $("#clone-result").html($("#item1").clone(true))
+            $("#clone-result").after("<div id='clone"+test+"'></div>");
+
+            
+            $("#clone"+test).html($("#item1").clone(true));
+            // $("#clone"+test).html($("#item1").clone()); // false
+            test++;
+
+        }
+
+
+        $(function(){
+            // 복제할 요소에 hover 이벤트 (마우스엔터 + 마우스아웃)
+            $(".item").hover(function(){
+                $(this).addClass("purple")
+            },function(){
+                $(this).removeClass("purple")
+            });
+        })
+    </script>
+
+
+    <hr>
+
+    <h3>* 요소 객체 제거 및 잘라내기 메소드</h3>
+    <p>
+        $("선택자").empty() : 그 요소의 하위 요소를 삭제하는 거임. 그러니 상위 요소를 선택해야함 <br>
+
+        $("선택자").remove | detach() : 선택된 요소 제거 후 해당 제거된 요소를 반환 (잘라내기)<br>
+        > remove() : 잘라내기시 잘라낸 요소의 이벤트 안가져옴 <br>
+        > detach() : 잘라내기시 잘라낸 요소의 이벤트까지도 가져옴 <br>
+    </p>
+
+    <div id="remove-test">
+        <!-- 제거할 요소 -->
+        <div id="item2" class="item">
+            <span>빠잉</span>
+        </div>
+    </div>
+    
+    <button id="empty">제거</button>
+    <button id="remove">잘라내기1</button>
+    <button id="detach">잘라내기2</button>
+
+    <div id="remove-result">
+
+    </div>
+
+    <script>
+        $(function() {
+            $("#empty").click(function() {
+                // $("#item2").empty(); // empty : item2 요소 안을 비우겠다는 의미
+                $("#remove-test").empty();
+            })
+            $("#remove").click(function() {
+                const el = $("#item2").remove(); // 이벤트 안가져옴
+                $("#remove-result").append(el);
+            })
+
+            $("#detach").click(function() {
+                $("#remove-result").append($("#item2").detach()); // 이벤트도 가져옴
+              
+            })
+        })
+    </script>
+
+    <!-- 
+        요소.css("스타일속성","변경값") : 변경
+        요소.css("스타일속성") : 반환
+
+        요소.val("문구") : 변경
+        요소.val() : 반환
+
+        요소.html|text("문구") : 변경
+        요소.html|text() : 반환
+
+        요소.attr("그외속성명" , "값") : 변경
+        요소.attr("그외속성명") : 반환
+
+        요소.이벤트(function(){})
+
+        요소.addClass("클라스명");
+        요소.removeClass("클라스명");
+
+        그 외 필터링 메소드
+
+        요소탐색(parents(), children(), find(), aivlings())
+
+     -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>

@@ -67,7 +67,7 @@
     <input type="text"><br>
     <input type="number" class="test test1"><br>
     <input type="radio"><br>
-    <input type="checkbox" ><br>
+    <!-- <input type="checkbox" ><br> -->
     <input type="button" value="button" class="test2"> <br>
 
     <script>
@@ -97,7 +97,7 @@
 
     텍스트상자 : <input type="text" name="" id=""><br>
     일반버튼 : <input type="button" value="앙"><br>
-    체크박스 : <input type="checkbox" name="" id=""> <br>
+    <!-- 체크박스 : <input type="checkbox" name="" id=""> <br> -->
     천부파일 : <input type="file" name="" id=""> <br>
     비밀번호 : <input type="password" name="" id=""> <br>
     라디오버튼 : <input type="radio" name="" id=""> <br>
@@ -108,7 +108,7 @@
         $(function() {
             $(":text").css("backgroundColor","green");
             
-            $(":button").css({width:"100px", height:"100px", color:"black"}).val("앙딱대");
+            // $(":button").css({width:"100px", height:"100px", color:"black"}).val("앙딱대");
 
             $(":checkbox").attr("checked",false);
 
@@ -132,39 +132,112 @@
             })
 
             // mouseenter : 선택된 요소의 경계 내부로 마우스가 들어가는 순간 발생하는 이벤트
-            $(":submit").val("제출").mouseenter(function(){
-                // $(this).css({backgroundColor:"purple"})
-                $(this).addClass("test11");
-                //  .addClass() : 선택된 요소에 클래스를 추가해주는 메소드
+            // $(":submit").val("제출").mouseenter(function(){
+            //     // $(this).css({backgroundColor:"purple"})
+            //     $(this).addClass("test11");
+            //     //  .addClass() : 선택된 요소에 클래스를 추가해주는 메소드
 
-            })
-            $(":submit").val("제출").mouseout(function(){
-                // $(this).css({backgroundColor:""}) // 원상복귀
-                $(this).removeClass();
-                //  .removeClass(); : 선택된 요소의 클래스를 제거해주는 메소드
-            })
+            // })
+            // $(":submit").val("제출").mouseout(function(){
+            //     // $(this).css({backgroundColor:""}) // 원상복귀
+            //     $(this).removeClass();
+            //     //  .removeClass(); : 선택된 요소의 클래스를 제거해주는 메소드
+            // })
             
             // $(":submit").hover(function(){
             //    $(this).css({backgroundColor:"purple"})
             // })
 
+            // hover : mouseenter + mouseout
+            $(":submit").hover(function() {
+                $(this).addClass("test11")
+            },function(){
+                $(this).removeClass("test11")
+            });
+
+            $(":submit").hover(function(){},function(){})
+
 
         })
     </script>
     
+    <hr>
 
+    <h3>* 상태(checked, selected, disabled, enabled) 선택자</h3>
+
+    <h4>*checked 상태 선택자(radio, checkbox)</h4>
+
+    취미 : 
+    <input type="checkbox" name="hobby" value="game"> 게임
+    <input type="checkbox" name="hobby" value="movie"> 영화
+    <input type="checkbox" name="hobby" value="music"> 음악
     
+    <button type="button" id="btn">실행</button>
+    <!-- 버튼 타입 미지정시 submit -->
 
+    <script>
+        $(function() {
+            // 버튼 클릭시 현재 checked 상태인 요소 선택해서 스타일 부여
+        // $("#btn").click(function () {
+        //     $("input:checked").css({width:"50px", height:"50px"})
+        //     // 근데 체크 해제하더라도 원상복구가 안됨
 
+        // })
 
+        //  checkbox인 요소들에 change 이벤트 발생시
+        $(":checkbox").change(function(){
+            // .prop() : 내가 제시한 속성의 값을 리턴함
+            console.log($(this).prop("checked"));
 
+            if($(this).prop("checked")){ // 체크가 된 상황
+                $(this).css({width:"50px", height:"50px"})
+            }else { // 체크가 해제 된 상황
+                $(this).css({width:"", height:""})
+            }
+        })
+        
+        
+        })
+    </script>    
 
+    <h4>- selected 상태 선택자(select>option)</h4>
 
+    국적 :
+    <select name="national" >
+        <option value="X">선택안함</option>
+        <option value="ko">항곡</option>
+        <option value="us">아메리카</option>
+        <option value="eu">영구크</option>
+    </select>
 
+    <button onclick="test();" type="button" id="btn2">전송</button>
+    <br>
+    선택한 나라 : <span id="result">선택안함</span>
+    
+    <script>
+        function test() {
+            $(function() {
+                // 현재 선택된 (selected 상태) option 요소 가져오기
+                console.log($("option:selected").val());
+                console.log($("option:selected").html());
 
+                $("#result").html($("option:selected").html());
 
+            })
+        }
+    </script>
 
+    <h4>- disabled, enabled 상태 생성자 (input 요소들, button)</h4>
 
+    <button type="button">활성화</button>
+    <button type="button" disabled>비활성</button>
+
+    <script>
+        $(function(){
+            $("button:enabled").css("backgroundColor","yellowGreen")
+            $("button:disabled").css("backgroundColor","orangered")
+        })
+    </script>
 
 
 
