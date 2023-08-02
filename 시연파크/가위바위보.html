@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Rock-Paper-Scissors Game</title>
+    <style>
+        /* Add your CSS styling here */
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        .choice {
+            margin: 5px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Rock-Paper-Scissors Game</h1>
+    <div id="game">
+        <button class="choice" onclick="playGame('rock')">Rock</button>
+        <button class="choice" onclick="playGame('paper')">Paper</button>
+        <button class="choice" onclick="playGame('scissors')">Scissors</button>
+    </div>
+    <div id="result"></div>
+
+    <script>
+        function playGame(userChoice) {
+            const choices = ["rock", "paper", "scissors"];
+            const computerChoice = choices[Math.floor(Math.random() * choices.length)];
+
+            // Determine the result
+            let result;
+            const randomValue = Math.random(); // Generate a random value between 0 and 1
+
+            // Set the probabilities for user win, lose, and tie
+            const userWinProbability = 0.9;
+            const userLoseProbability = 0.1; // The remaining 30% for tying
+
+            if (randomValue < userWinProbability) {
+                // The user wins!
+                result = "Congratulations! You win!";
+            } else if (randomValue < userWinProbability + userLoseProbability) {
+                // The computer wins
+                result = "Sorry, you lose!";
+            } else {
+                // It's a tie
+                result = "It's a tie!";
+            }
+
+            // Display the result
+            document.getElementById("result").innerText = `You chose ${userChoice}, and the computer chose ${computerChoice}. ${result}`;
+        }
+    </script>
+</body>
+</html>
