@@ -59,6 +59,7 @@
                 
                 const $p = $(this).next(); // 제이쿼리 방식으로 요소 담아둘 때
 
+                console.log($p)
                 if($p.css("display") == "none"){
                     $("p").slideUp(); // 기존거는 닫히면서 지금것만 열리게
                     // $(this).siblings("p").slideUp();
